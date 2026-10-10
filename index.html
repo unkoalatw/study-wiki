@@ -388,9 +388,150 @@
       color: var(--text);
       display: none;
     }
+
+    /* Mobile Responsive Styles */
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+      flex: 1;
+    }
+    .menu-toggle-btn {
+      display: none;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.38rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+      touch-action: manipulation;
+    }
+    .menu-toggle-btn:active {
+      background: var(--accent);
+      color: #000;
+    }
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(3px);
+      z-index: 99;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .sidebar-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        overflow: hidden;
+      }
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+        width: 82%;
+        max-width: 310px;
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 4px 0 24px rgba(0,0,0,0.6);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      .menu-toggle-btn {
+        display: inline-flex;
+      }
+      .top-bar {
+        padding: 0.55rem 0.75rem;
+        gap: 0.5rem;
+      }
+      .top-mode-badge {
+        display: none;
+      }
+      .tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .tab-btn {
+        flex-shrink: 0;
+        padding: 0.38rem 0.65rem;
+        font-size: 0.8rem;
+      }
+      .content-area {
+        padding: 1rem 0.75rem 2rem 0.75rem;
+      }
+      .topic-title {
+        font-size: 1.4rem;
+      }
+      .section-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .section-title {
+        font-size: 1.05rem;
+      }
+      .wiki-table th, .wiki-table td {
+        padding: 0.55rem 0.65rem;
+        font-size: 0.85rem;
+        white-space: normal;
+      }
+      .wiki-table td:first-child {
+        width: auto;
+        min-width: 85px;
+      }
+      .flashcard {
+        min-height: 190px;
+        padding: 1.25rem 1rem;
+      }
+      .flashcard-text {
+        font-size: 1.08rem;
+      }
+      .action-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.85rem;
+      }
+      .quiz-card {
+        padding: 1.1rem 1rem;
+      }
+      .quiz-q {
+        font-size: 0.98rem;
+      }
+      .quiz-opt {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.88rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile Backdrop Overlay -->
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
   <!-- Sidebar -->
   <aside id="sidebar">
     <div class="sidebar-header">
@@ -408,16 +549,22 @@
   <!-- Main View -->
   <main id="main">
     <div class="top-bar">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="article">📖 條目導讀</button>
-        <button class="tab-btn" data-tab="timeline">⏳ 視覺時間軸</button>
-        <button class="tab-btn" data-tab="flashcard">🗂️ 記憶抽認卡</button>
-        <button class="tab-btn" data-tab="quiz_cap">🎯 會考歷屆真題</button>
-        <button class="tab-btn" data-tab="quiz_midterm">🏫 名校段考題（金華）</button>
-        <button class="tab-btn" data-tab="quiz_gov">🏛️ 國考／聯考精選題</button>
+      <div class="top-bar-left">
+        <button id="menuToggle" class="menu-toggle-btn" aria-label="切換單元選單">
+          <span>☰</span>
+          <span>章節</span>
+        </button>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="article">📖 導讀</button>
+          <button class="tab-btn" data-tab="timeline">⏳ 時間軸</button>
+          <button class="tab-btn" data-tab="flashcard">🗂️ 抽認卡</button>
+          <button class="tab-btn" data-tab="quiz_cap">🎯 會考真題</button>
+          <button class="tab-btn" data-tab="quiz_midterm">🏫 段考題</button>
+          <button class="tab-btn" data-tab="quiz_gov">🏛️ 國考題</button>
+        </div>
       </div>
-      <div style="font-size: 0.8rem; color: var(--text-muted);">
-        模式：動態互動學習
+      <div class="top-mode-badge" style="font-size: 0.8rem; color: var(--text-muted); flex-shrink: 0;">
+        動態學習
       </div>
     </div>
 
@@ -456,6 +603,7 @@
             currentTopicId = t.id;
             currentCardIndex = 0;
             isFlipped = false;
+            closeSidebar();
             renderNav();
             renderContent();
           };
@@ -478,11 +626,11 @@
             body += `<p>${sec.content}</p>`;
           }
           if (sec.table) {
-            body += `<table class="wiki-table"><thead><tr><th>對象</th><th>關鍵考點精髓</th></tr></thead><tbody>`;
+            body += `<div class="table-responsive"><table class="wiki-table"><thead><tr><th>對象</th><th>關鍵考點精髓</th></tr></thead><tbody>`;
             sec.table.forEach(r => {
               body += `<tr><td>${r.entity}</td><td>${r.points}</td></tr>`;
             });
-            body += `</tbody></table>`;
+            body += `</tbody></table></div>`;
           }
           sectionsHtml += `
             <div class="section-card">
@@ -653,6 +801,24 @@
         }
       });
     };
+
+    // Mobile Drawer Logic
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const menuToggle = document.getElementById("menuToggle");
+
+    function openSidebar() {
+      if (sidebar) sidebar.classList.add("open");
+      if (overlay) overlay.classList.add("active");
+    }
+
+    function closeSidebar() {
+      if (sidebar) sidebar.classList.remove("open");
+      if (overlay) overlay.classList.remove("active");
+    }
+
+    if (menuToggle) menuToggle.onclick = openSidebar;
+    if (overlay) overlay.onclick = closeSidebar;
 
     // Init
     renderNav();
