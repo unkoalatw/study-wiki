@@ -526,6 +526,385 @@
         font-size: 0.88rem;
       }
     }
+
+    /* 全真段考試卷專屬樣式 (Full Exam Simulation) */
+    .exam-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 5rem;
+    }
+    .exam-header-card {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid #38bdf8;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.12);
+    }
+    .exam-title-badge {
+      display: inline-block;
+      background: #0284c7;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.5rem;
+    }
+    .exam-main-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .exam-meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #334155;
+    }
+    .exam-meta-item b {
+      color: #f8fafc;
+    }
+
+    /* 懸浮控制列與計時器 */
+    .exam-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    .exam-timer {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #facc15;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .exam-progress-wrap {
+      flex: 1;
+      max-width: 280px;
+    }
+    .exam-progress-bar {
+      width: 100%;
+      height: 7px;
+      background: #334155;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+    .exam-progress-fill {
+      height: 100%;
+      background: #38bdf8;
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+    .exam-submit-btn {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      padding: 0.55rem 1.15rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.15s, transform 0.1s;
+      flex-shrink: 0;
+    }
+    .exam-submit-btn:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    /* 快速答題卡題號抽屜 (Question Palette) */
+    .palette-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .palette-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 0.65rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+      gap: 0.4rem;
+    }
+    .palette-btn {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .palette-btn:hover {
+      border-color: #38bdf8;
+      color: #f8fafc;
+    }
+    .palette-btn.answered {
+      background: #0284c7;
+      color: #fff;
+      border-color: #38bdf8;
+    }
+    .palette-btn.correct {
+      background: #15803d !important;
+      color: #fff !important;
+      border-color: #4ade80 !important;
+    }
+    .palette-btn.wrong {
+      background: #b91c1c !important;
+      color: #fff !important;
+      border-color: #f87171 !important;
+    }
+
+    /* 大題分區標題與閱讀引文卡 */
+    .exam-section-heading {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin: 2.2rem 0 1rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .passage-card {
+      background: #1e293b;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1.2rem 1.3rem;
+      margin: 1.25rem 0;
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+    .passage-card b {
+      color: #fbbf24;
+    }
+
+    /* 試題卡片 */
+    .exam-qcard {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .exam-qcard:hover {
+      border-color: #475569;
+    }
+    .qcard-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+    .qcard-num {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+    .qcard-pts {
+      font-size: 0.75rem;
+      background: #334155;
+      color: #cbd5e1;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .qcard-stem {
+      font-size: 0.98rem;
+      line-height: 1.68;
+      color: #f8fafc;
+      white-space: pre-line;
+      margin-bottom: 1rem;
+    }
+    .qcard-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .qcard-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: #e2e8f0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .qcard-opt:hover {
+      background: #1e293b;
+      border-color: #64748b;
+    }
+    .qcard-opt.selected {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: #38bdf8;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+    .qcard-opt.result-correct {
+      background: rgba(34, 197, 94, 0.18) !important;
+      border-color: #4ade80 !important;
+      color: #4ade80 !important;
+      font-weight: 700;
+    }
+    .qcard-opt.result-wrong {
+      background: rgba(239, 68, 68, 0.18) !important;
+      border-color: #f87171 !important;
+      color: #f87171 !important;
+    }
+    .opt-label {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .qcard-opt.selected .opt-label {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    .qcard-opt.result-correct .opt-label {
+      background: #4ade80;
+      color: #0f172a;
+    }
+    .qcard-opt.result-wrong .opt-label {
+      background: #f87171;
+      color: #fff;
+    }
+
+    /* 詳解區域 */
+    .exam-explanation-box {
+      margin-top: 1rem;
+      padding: 1.1rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-left: 4px solid #38bdf8;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      white-space: pre-line;
+      color: #cbd5e1;
+    }
+
+    /* 結算成績看板 */
+    .score-dashboard {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 2px solid #38bdf8;
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2);
+    }
+    .score-circle {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      margin: 1rem 0;
+      background: #0f172a;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+    .score-num {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #38bdf8;
+      line-height: 1;
+    }
+    .score-max {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 0.2rem;
+    }
+    .score-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      padding: 0.75rem 0;
+      border-top: 1px solid #334155;
+      border-bottom: 1px solid #334155;
+      font-size: 0.95rem;
+    }
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stat-pill b { font-size: 1.1rem; }
+    .score-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: #38bdf8;
+      color: #0f172a;
+    }
   </style>
 </head>
 <body>
@@ -561,6 +940,7 @@
           <button class="tab-btn" data-tab="quiz_cap">🎯 會考真題</button>
           <button class="tab-btn" data-tab="quiz_midterm">🏫 段考題</button>
           <button class="tab-btn" data-tab="quiz_gov">🏛️ 國考題</button>
+          <button class="tab-btn full-exam-tab" data-tab="full_exam" style="background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.4); font-weight: 700;">🏆 金華114段考全卷(45題)</button>
         </div>
       </div>
       <div class="top-mode-badge" style="font-size: 0.8rem; color: var(--text-muted); flex-shrink: 0;">
@@ -572,11 +952,22 @@
   </main>
 
   <script src="wiki-data.js"></script>
+  <script src="exam-diagrams.js"></script>
+  <script src="jinhua-114-exam.js"></script>
   <script>
     let currentTopicId = "hist-9-up-1-1";
     let currentTab = "article";
     let currentCardIndex = 0;
     let isFlipped = false;
+
+    // 全真段考模擬狀態
+    let examAnswers = {};
+    let examSubmitted = false;
+    let examTimerSeconds = 45 * 60;
+    let examTimerInterval = null;
+    let examTimerPaused = false;
+    let examFilterWrongOnly = false;
+    let renderedGroups = new Set();
 
     function getTopic(id) {
       for (const cat of window.WIKI_DATABASE.categories) {
@@ -604,6 +995,17 @@
             currentCardIndex = 0;
             isFlipped = false;
             closeSidebar();
+
+            if (t.isFullExam) {
+              currentTab = "full_exam";
+            } else if (currentTab === "full_exam") {
+              currentTab = "article";
+            }
+
+            document.querySelectorAll(".tab-btn").forEach(b => {
+              b.classList.toggle("active", b.getAttribute("data-tab") === currentTab);
+            });
+
             renderNav();
             renderContent();
           };
@@ -613,9 +1015,431 @@
       });
     }
 
+    // 全真段考計時器
+    function initExamTimer() {
+      if (examTimerInterval) clearInterval(examTimerInterval);
+      examTimerInterval = setInterval(() => {
+        if (!examSubmitted && !examTimerPaused && examTimerSeconds > 0) {
+          examTimerSeconds--;
+          updateExamTimerUI();
+          if (examTimerSeconds === 0) {
+            alert("⏰ 作答時間到！系統將自動為您送出試卷批改。");
+            submitExam(true);
+          }
+        }
+      }, 1000);
+    }
+
+    function updateExamTimerUI() {
+      const timerEl = document.getElementById("examTimerText");
+      if (!timerEl) return;
+      const m = Math.floor(examTimerSeconds / 60).toString().padStart(2, "0");
+      const s = (examTimerSeconds % 60).toString().padStart(2, "0");
+      timerEl.textContent = `${m}:${s}`;
+    }
+
+    function updateExamProgress() {
+      const exam = window.JINHUA_114_EXAM;
+      if (!exam) return;
+      const answeredCount = Object.keys(examAnswers).length;
+      const total = exam.questions.length;
+      const pct = Math.round((answeredCount / total) * 100);
+
+      const progText = document.getElementById("examProgText");
+      const progFill = document.getElementById("examProgFill");
+      if (progText) progText.textContent = `已作答：${answeredCount} / ${total} 題 (${pct}%)`;
+      if (progFill) progFill.style.width = `${pct}%`;
+
+      // 更新快速答題卡
+      exam.questions.forEach(q => {
+        const pBtn = document.getElementById(`pal-btn-${q.id}`);
+        if (pBtn && !examSubmitted) {
+          if (examAnswers[q.id] !== undefined) {
+            pBtn.classList.add("answered");
+          } else {
+            pBtn.classList.remove("answered");
+          }
+        }
+      });
+    }
+
+    function scrollToQuestion(qid) {
+      const el = document.getElementById(`qcard-${qid}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.style.borderColor = "#38bdf8";
+        setTimeout(() => {
+          el.style.borderColor = "";
+        }, 1200);
+      }
+    }
+
+    function submitExam(force = false) {
+      const exam = window.JINHUA_114_EXAM;
+      if (!exam) return;
+      const answeredCount = Object.keys(examAnswers).length;
+      const total = exam.questions.length;
+      const unanswered = total - answeredCount;
+
+      if (!force && unanswered > 0) {
+        const ok = confirm(`⚠️ 您尚有 ${unanswered} 題尚未作答！\n\n確定現在送出交卷批改嗎？`);
+        if (!ok) return;
+      }
+
+      examSubmitted = true;
+      if (examTimerInterval) clearInterval(examTimerInterval);
+      renderFullExam();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function retakeExam() {
+      if (confirm("🔄 確定要重設試卷並重新測驗嗎？這將清空所有答案記錄。")) {
+        examAnswers = {};
+        examSubmitted = false;
+        examTimerSeconds = 45 * 60;
+        examTimerPaused = false;
+        examFilterWrongOnly = false;
+        initExamTimer();
+        renderFullExam();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    // 全真段考試卷渲染引擎
+    function renderFullExam() {
+      const container = document.getElementById("contentArea");
+      const exam = window.JINHUA_114_EXAM;
+      if (!exam) {
+        container.innerHTML = `<div style="padding:2rem; text-align:center;">試卷載入中...</div>`;
+        return;
+      }
+
+      if (!examTimerInterval && !examSubmitted) {
+        initExamTimer();
+      }
+
+      let totalScore = 0;
+      let correctCount = 0;
+      let wrongCount = 0;
+      let unansweredCount = 0;
+
+      if (examSubmitted) {
+        exam.questions.forEach(q => {
+          const ans = examAnswers[q.id];
+          if (ans === undefined) {
+            unansweredCount++;
+          } else if (ans === q.answer) {
+            correctCount++;
+            totalScore += q.points;
+          } else {
+            wrongCount++;
+          }
+        });
+      }
+
+      // 產生快速答題卡題號 Palette
+      let paletteHtml = "";
+      exam.questions.forEach(q => {
+        let statusClass = "";
+        if (examSubmitted) {
+          const ans = examAnswers[q.id];
+          if (ans === q.answer) {
+            statusClass = "correct";
+          } else {
+            statusClass = "wrong";
+          }
+        } else if (examAnswers[q.id] !== undefined) {
+          statusClass = "answered";
+        }
+
+        paletteHtml += `
+          <button class="palette-btn ${statusClass}" id="pal-btn-${q.id}" onclick="scrollToQuestion(${q.id})" title="跳至第 ${q.id} 題">
+            ${q.id}
+          </button>
+        `;
+      });
+
+      // 結算成績看板 (交卷後呈現)
+      let scoreBoardHtml = "";
+      if (examSubmitted) {
+        let grade = "B";
+        let gradeNote = "基礎級";
+        if (totalScore >= 95) { grade = "A++"; gradeNote = "精熟超群（會考歷史學霸水準）"; }
+        else if (totalScore >= 90) { grade = "A+"; gradeNote = "精熟優異"; }
+        else if (totalScore >= 80) { grade = "A"; gradeNote = "精熟達標"; }
+        else if (totalScore >= 70) { grade = "B++"; gradeNote = "基礎前段，再接再厲！"; }
+        else if (totalScore >= 60) { grade = "B+"; gradeNote = "基礎中段，考點需多加強"; }
+        else { grade = "C"; gradeNote = "待加強，建議重新研讀導讀與抽認卡"; }
+
+        const timeUsedSec = 45 * 60 - examTimerSeconds;
+        const usedMin = Math.floor(timeUsedSec / 60);
+        const usedSec = timeUsedSec % 60;
+
+        scoreBoardHtml = `
+          <div class="score-dashboard">
+            <span class="exam-title-badge">🎉 測驗完成 · 成績報告單</span>
+            <div style="font-size: 1.1rem; color: #94a3b8; margin-top: 0.4rem;">臺北市立金華國中 114上 歷史第一次段考</div>
+            <div class="score-circle">
+              <span class="score-num">${totalScore}</span>
+              <span class="score-max">滿分 100 分</span>
+            </div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: #facc15; margin-bottom: 0.2rem;">等級：${grade}</div>
+            <div style="font-size: 0.9rem; color: #cbd5e1;">${gradeNote}</div>
+            
+            <div class="score-stats">
+              <div class="stat-pill"><span style="color:#4ade80;">✔ 答對：</span><b>${correctCount} 題</b></div>
+              <div class="stat-pill"><span style="color:#f87171;">✘ 答錯：</span><b>${wrongCount} 題</b></div>
+              <div class="stat-pill"><span style="color:#94a3b8;">○ 未答：</span><b>${unansweredCount} 題</b></div>
+              <div class="stat-pill"><span style="color:#38bdf8;">⏱ 耗時：</span><b>${usedMin}分 ${usedSec}秒</b></div>
+            </div>
+
+            <div class="score-actions">
+              <button class="btn-outline ${!examFilterWrongOnly ? 'active' : ''}" id="filterAllBtn">
+                📋 全部試題 (${exam.questions.length})
+              </button>
+              <button class="btn-outline ${examFilterWrongOnly ? 'active' : ''}" id="filterWrongBtn">
+                ❌ 僅看錯題 (${wrongCount + unansweredCount})
+              </button>
+              <button class="exam-submit-btn" style="background:#f59e0b;" onclick="retakeExam()">
+                🔄 重新測驗
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 試題卡片渲染
+      let questionsHtml = "";
+      renderedGroups.clear();
+
+      exam.questions.forEach((q) => {
+        const isUserCorrect = examSubmitted && examAnswers[q.id] === q.answer;
+        if (examSubmitted && examFilterWrongOnly && isUserCorrect) {
+          return;
+        }
+
+        // 大題標題分割
+        if (q.id === 1) {
+          questionsHtml += `
+            <div class="exam-section-heading">
+              <span>📌</span> 一、單題（第 1~28 題，每題 2 分）
+            </div>
+          `;
+        } else if (q.id === 29) {
+          questionsHtml += `
+            <div class="exam-section-heading">
+              <span>📚</span> 二、題組（第 29~35 題每題 2 分；第 36~45 題每題 3 分）
+            </div>
+          `;
+        }
+
+        // 題組引文材料卡片
+        if (q.groupStem && !renderedGroups.has(q.section)) {
+          renderedGroups.add(q.section);
+          questionsHtml += `
+            <div class="passage-card">
+              <div style="font-weight: bold; color: #f59e0b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+                <span>📖</span> 閱讀引文材料
+              </div>
+              <div>${q.groupStem}</div>
+            </div>
+          `;
+        }
+
+        // 題目圖表渲染 (向量 SVG / 視覺卡片)
+        let diagramHtml = "";
+        if (q.diagramType && window.EXAM_DIAGRAMS) {
+          diagramHtml = window.EXAM_DIAGRAMS.render(q.diagramType, q.diagramDesc);
+        }
+
+        // 選項生成
+        const optLetters = ["(A)", "(B)", "(C)", "(D)"];
+        let optionsHtml = "";
+        q.options.forEach((optText, optIdx) => {
+          let optClass = "qcard-opt";
+          let badgeText = optLetters[optIdx];
+
+          const isSelected = examAnswers[q.id] === optIdx;
+
+          if (examSubmitted) {
+            if (optIdx === q.answer) {
+              optClass += " result-correct";
+              badgeText += " ★ 正確答案";
+            } else if (isSelected) {
+              optClass += " result-wrong";
+              badgeText += " ✘ 您的選擇";
+            }
+          } else if (isSelected) {
+            optClass += " selected";
+          }
+
+          optionsHtml += `
+            <div class="${optClass}" data-qid="${q.id}" data-opt="${optIdx}">
+              <span class="opt-label">${optLetters[optIdx].replace(/[()]/g, '')}</span>
+              <div style="flex:1;">
+                ${optText}
+                ${examSubmitted && (optIdx === q.answer || isSelected) ? `<span style="font-size:0.75rem; margin-left:0.5rem; font-weight:bold;">${badgeText}</span>` : ""}
+              </div>
+            </div>
+          `;
+        });
+
+        // 詳解卡片
+        let expHtml = "";
+        if (examSubmitted) {
+          expHtml = `
+            <div class="exam-explanation-box">
+              <div style="font-weight: bold; color: #38bdf8; margin-bottom: 0.4rem;">💡 考點精解與破題關鍵：</div>
+              <div>${q.explanation}</div>
+            </div>
+          `;
+        }
+
+        questionsHtml += `
+          <div class="exam-qcard" id="qcard-${q.id}">
+            <div class="qcard-top">
+              <span class="qcard-num">第 ${q.id} 題</span>
+              <span class="qcard-pts">${q.points} 分</span>
+            </div>
+            <div class="qcard-stem">${q.stem}</div>
+            ${diagramHtml}
+            <div class="qcard-options">${optionsHtml}</div>
+            ${expHtml}
+          </div>
+        `;
+      });
+
+      const answeredCount = Object.keys(examAnswers).length;
+      const totalCount = exam.questions.length;
+      const pct = Math.round((answeredCount / totalCount) * 100);
+
+      container.innerHTML = `
+        <div class="exam-container">
+          <!-- 試卷抬頭 -->
+          <div class="exam-header-card">
+            <span class="exam-title-badge">🏫 國中歷史全真段考試卷</span>
+            <h1 class="exam-main-title">${exam.title}</h1>
+            <p style="color: #cbd5e1; font-size: 0.95rem;">${exam.subtitle}</p>
+            <div class="exam-meta-grid">
+              <div class="exam-meta-item"><span>學校：</span><b>${exam.meta.school}</b></div>
+              <div class="exam-meta-item"><span>考科：</span><b>${exam.meta.grade} ${exam.meta.examName}</b></div>
+              <div class="exam-meta-item"><span>題數：</span><b>共 ${exam.meta.totalQuestions} 題單選</b></div>
+              <div class="exam-meta-item"><span>滿分：</span><b>${exam.meta.totalScore} 分</b></div>
+              <div class="exam-meta-item"><span>計分說明：</span><b>${exam.meta.scoreRules}</b></div>
+            </div>
+          </div>
+
+          <!-- 懸浮控制列 -->
+          <div class="exam-toolbar">
+            <div class="exam-timer" title="點擊暫停/繼續計時" id="timerToggleBtn" style="cursor:pointer;">
+              <span>⏱</span>
+              <span id="examTimerText">45:00</span>
+              ${examSubmitted ? '<span style="font-size:0.75rem; color:#4ade80;">(已交卷)</span>' : ''}
+            </div>
+
+            <div class="exam-progress-wrap">
+              <div style="font-size: 0.78rem; color: #94a3b8; display: flex; justify-content: space-between;" id="examProgText">
+                已作答：${answeredCount} / ${totalCount} 題 (${pct}%)
+              </div>
+              <div class="exam-progress-bar">
+                <div class="exam-progress-fill" id="examProgFill" style="width: ${pct}%;"></div>
+              </div>
+            </div>
+
+            ${!examSubmitted ? `
+              <button class="exam-submit-btn" id="submitExamBtn" onclick="submitExam()">
+                📝 交卷批改
+              </button>
+            ` : `
+              <button class="exam-submit-btn" style="background:#10b981;" onclick="retakeExam()">
+                🔄 重新測驗
+              </button>
+            `}
+          </div>
+
+          <!-- 快速題號答題卡 -->
+          <div class="palette-card">
+            <div class="palette-header">
+              <span>🎯 快速答題卡 (點擊題號跳轉)</span>
+              <span>${examSubmitted ? '🟢 正確 / 🔴 錯誤' : '🔵 已填 / ⚪ 未填'}</span>
+            </div>
+            <div class="palette-grid">${paletteHtml}</div>
+          </div>
+
+          <!-- 結算成績看板 (若已交卷) -->
+          ${scoreBoardHtml}
+
+          <!-- 試題列表 -->
+          <div id="examQuestionsList">${questionsHtml}</div>
+
+          <!-- 底部交卷確認區 -->
+          ${!examSubmitted ? `
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #1e293b; border-radius: 12px; border: 1px dashed #38bdf8;">
+              <h3 style="color:#f8fafc; margin-bottom: 0.5rem;">🎉 已瀏覽完全部試題？</h3>
+              <p style="color:#94a3b8; font-size:0.9rem; margin-bottom: 1.25rem;">請確認所有題目皆已填答完畢，點擊下方按鈕將立即由系統為您批改並公佈詳解！</p>
+              <button class="exam-submit-btn" style="font-size:1.05rem; padding: 0.8rem 2.2rem;" onclick="submitExam()">
+                📝 確認交卷批改 (Submit Exam)
+              </button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      updateExamTimerUI();
+
+      // 綁定選項點擊事件
+      if (!examSubmitted) {
+        document.querySelectorAll(".qcard-opt").forEach(optEl => {
+          optEl.onclick = function() {
+            const qid = parseInt(this.getAttribute("data-qid"));
+            const optIdx = parseInt(this.getAttribute("data-opt"));
+            examAnswers[qid] = optIdx;
+
+            // 切換選項選中樣式
+            const parentCard = document.getElementById(`qcard-${qid}`);
+            if (parentCard) {
+              parentCard.querySelectorAll(".qcard-opt").forEach(o => o.classList.remove("selected"));
+              this.classList.add("selected");
+            }
+
+            updateExamProgress();
+          };
+        });
+      }
+
+      // 錯題篩選按鈕事件
+      const filterAllBtn = document.getElementById("filterAllBtn");
+      const filterWrongBtn = document.getElementById("filterWrongBtn");
+      if (filterAllBtn && filterWrongBtn) {
+        filterAllBtn.onclick = () => {
+          examFilterWrongOnly = false;
+          renderFullExam();
+        };
+        filterWrongBtn.onclick = () => {
+          examFilterWrongOnly = true;
+          renderFullExam();
+        };
+      }
+
+      // 計時器暫停/繼續切換
+      const timerBtn = document.getElementById("timerToggleBtn");
+      if (timerBtn && !examSubmitted) {
+        timerBtn.onclick = () => {
+          examTimerPaused = !examTimerPaused;
+          alert(examTimerPaused ? "⏸️ 測驗已暫停計時" : "▶️ 測驗繼續計時");
+        };
+      }
+    }
+
     function renderContent() {
       const container = document.getElementById("contentArea");
       const topic = getTopic(currentTopicId);
+
+      if (currentTab === "full_exam" || (topic && topic.isFullExam)) {
+        renderFullExam();
+        return;
+      }
+
       if (!topic) return;
 
       if (currentTab === "article") {
